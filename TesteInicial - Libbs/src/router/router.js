@@ -1,28 +1,52 @@
 const { Router } = require("express");
-const UserController = require("../controller/UserController")
-
+const UserController = require("../controller/UserController");
+const ProdutoController = require("../controller/ProdutoControlloer")
+ 
+ 
 const router = Router();
-
-//configurar as rotas { CRUD }
-router.post('/', (req,res) => {
-    UserController.create(req,res)
+//Configurar as Rotas ( CRUD )
+router.post('/', (req,res)=>{
+    UserController.create(req, res)
+ 
 });
-router.get('/', (req,res) =>{
-    UserController.getAll(req,res)
+router.get('/', (req,res)=>{
+    UserController.getAll(req, res)
+ 
 });
-// USAR DEPENDENDO DA EMPRESA OU EQUIPE
-// /api/users/:id -> /api/users/3217 (parametro) +facil para o front
-// /api/users?id=3216 -> (query) + usado em sistema de pesquisa
-// /api/search?s=Arthur%Rosa% -> (query)
-// {body: { id: "3212" } } -> ( Body ) criar e atualizar
-router.delete('/:id', (req,res) => {
-    UserController.delete(req,res)
+router.delete('/:id', (req,res)=>{
+    UserController.delete(req, res)
+ 
 });
-router.put('/:id', (req,res) =>{
-    UserController.update(req,res)
+router.put('/:id', (req,res)=>{
+    UserController.update(req, res)
+ 
 });
-router.get('/:id', (req,res) =>{
-    UserController.getOne(req,res)
+router.get('/:id', (req,res)=>{
+    UserController.getOne(req, res)
 });
 
+const routerP = Router();
+//Configurar as Rotas ( CRUD )
+routerP.post('/', (req,res)=>{
+    ProdutoController.create(req, res)
+ 
+});
+routerP.get('/', (req,res)=>{
+    ProdutoController.getAll(req, res)
+ 
+});
+routerP.delete('/:id', (req,res)=>{
+    ProdutoController.delete(req, res)
+ 
+});
+routerP.put('/:id', (req,res)=>{
+    ProdutoController.update(req, res)
+ 
+});
+routerP.get('/:id', (req,res)=>{
+    ProdutoController.getOne(req, res)
+});
+ 
+module.exports = routerP;
 module.exports = router;
+ 

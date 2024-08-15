@@ -1,41 +1,39 @@
-
-const express = require('express');
-const router = require('./router/router')
-const {Console} = require("console")
-const sequelize = require('./config/config')
-
-const User = require("./models/User")
-
-
-const app = express();
-//modelo de API JSON
+const express = require("express");
+const router = require("./router/router");
+const sequelize = require("./config/config");
+const { Console } = require("console");
+const app = express()
+const porta = 8080
+//modelo da API JSON
 app.use(express.json());
-app.use('/app/user', router);
-// REQ -> requisição
-// RES -> Response
-
+app.use('/api/user', router)
+//REQ -> Requisição
+//RES -> Response
 app.get('/healthcheck', (req, res) => {
-    // 200 -> OK
+    // 200 -> oK
     return res.status(200).json({
-      msg:'Estamos vivos!',
-      alive:true  
+        msg: 'Estamos vivos!',
+        alive: true
     });
 });
-
-sequelize
-.authenticate()
-.then(async () => {
-    console.log("Conecão estabelicidade com sucesso");
-    await sequelize.sync();
-});
-
-// Listen -> Ouvir (8080)
-app.listen(8080, () => {
-    console.log("###########################");
-    console.log("Estamos online na http:8080")
-    console.log("###########################");
-});
-
-  .catch((error) => {
-  console.error("error ao se conectar com o banco:", error);
-  });
+//Listen -> ouvir (8080)
+ 
+ 
+ 
+    sequelize
+    .authenticate()
+    .then(() => {
+        console.log("Conexão estabelecida com sucesso");
+        return sequelize.sync();
+    })
+ 
+    .then(() => {
+        app.listen(8080, () => {
+            console.log("######################");
+            console.log("Rodando no servidor 8080");
+            console.log("######################")
+        });
+    })
+    .catch((error) => {
+        console.error("Erro ao se conectar com o banco", error);
+    })
