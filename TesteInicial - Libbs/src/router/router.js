@@ -1,6 +1,6 @@
 const { Router } = require("express");
 const UserController = require("../controller/UserController");
-const ProdutoController = require("../controller/ProdutoControlloer")
+const ProdutoController = require("../controller/ProductController")
  
  
 const router = Router();
@@ -25,9 +25,11 @@ router.get('/:id', (req,res)=>{
     UserController.getOne(req, res)
 });
 
+
+
 const routerP = Router();
 //Configurar as Rotas ( CRUD )
-routerP.post('/', (req,res)=>{
+routerP.post('/product', (req,res)=>{
     ProdutoController.create(req, res)
  
 });
