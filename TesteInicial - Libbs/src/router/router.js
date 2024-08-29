@@ -1,21 +1,23 @@
 const { Router } = require("express");
-const userRouteU = require("./routerUser","./routerProduct");
-const userRouteP = require("./routerUser","./routerProduct");
-const userRouteC = require("./routerUser","./routerProduct");
-
+const RouteU = require("./routerUser");
+const RouteP = require("./routerProduct");
+const RouteC = require("./routerClient");
+const authenticateToken = require("../middlewares/authenticateToken");
 //USUARIO
 const router = Router();
-router.use('/user', userRouteU);
-module.exports = router;
+router.use('/user', RouteU);
 
+router.post('/login', (req,res) => {
+    UserController.login(req,res)
+})
 
 //PRODUTO
-const routerP = Router();
-router.use('/product', userRouteP)
-module.exports = routerP;
+
+router.use('/product', RouteP)
 
 //CLIENTE
-const routerC = Router();
-router.use('/client', userRouteC)
-module.exports = routerC;
+
+router.use('/client', RouteC)
+
+module.exports =  router;
 

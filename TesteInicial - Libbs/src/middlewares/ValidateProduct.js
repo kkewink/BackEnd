@@ -1,7 +1,7 @@
 const validateProduct = (req,res,next) =>{
-    const { nome, preco , quantidade } = req.body;
+    const { nome, preco , quantidade, categoria, descricao } = req.body;
     
-    if(!nome || preco || quantidade) {
+    if(!nome || !preco || !quantidade || !categoria || !descricao) {
         return res.status(400).json({
             mgs:"Campos invalidos, ABRE O OLHO FI",
         })

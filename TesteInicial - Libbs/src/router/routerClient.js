@@ -5,20 +5,20 @@ const ClientController = require("../controller/ClientController");
 
 const routerC = Router();
 
-routerC.post('/client', validateClient, (req,res) => {
+routerC.post('/', validateClient, (req,res) => {
     ClientController.create(req,res)
 });
 
-routerC.get('/client/:id',(req,res) => {
-    ClientController.get(req,res)
+routerC.get('/',(req,res) => {
+    ClientController.getAll(req,res)
 });
-routerC.delete('/client/:id', validateClientId, (req,res) => {
+routerC.delete('/:id', validateClientId, (req,res) => {
     ClientController.delete(req,res)
 });
-routerC.put('/client/:id' ,validateClientId,validateClient, (req,res) => {
+routerC.put('/:id' ,validateClientId,validateClient, (req,res) => {
     ClientController.update(req,res)
 });
-routerC.get('/client/:id', validateClientId,validateClient, (req,res) => {
+routerC.get('/:id', validateClientId, (req,res) => {
     ClientController.getOne(req,res)
 });
 

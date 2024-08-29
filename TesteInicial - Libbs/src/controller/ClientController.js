@@ -85,14 +85,18 @@ const ClientController = {
         try {
             const { id } = req.params;
 
-            const clientFinded = await User.findByPk(id);
+            const clientFinded = await Client.findByPk(id);
 
-            if(clientFinded == null ){
+            if(!clientFinded){
                 return res.status (400).json({
-                    msg: "Cliente Deletado com sucesso!",
+                    msg: "sem cliente!",
                 })
             }
             await clientFinded.destroy();
+            return res.status (400).json({
+                msg: "deletou pai!",
+            })
+
         } catch (error) {
                 console.log(error);
                 return res.status(500).json({ msg: "Bora bill Bora suporte do bill aquele meme là KKKKK"});

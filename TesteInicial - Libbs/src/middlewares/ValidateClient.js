@@ -1,7 +1,7 @@
 const validateClient = (req,res,next) =>{
-    const {nome , idade, rg, cpf, enderenco, email, senha} = req.body;
+    const {nome , idade, rg, cpf, endereco, email, senha} = req.body;
 
-    if(!nome || idade || rg || cpf || enderenco || email || senha){
+    if(!nome || !idade || !rg || !cpf || !endereco || !email || !senha){
         return res.status(400).json({
             mgs:"Campos invalidos, Abre o olho fi",
         })

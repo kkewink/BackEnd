@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require("express");
 const router = require("./router/router");
 const sequelize = require("./config/config");
@@ -5,10 +6,10 @@ const sequelize = require("./config/config");
 const Product = require("./models/Product")
 
 const app = express()
-const porta = 8080
 //modelo da API JSON
 app.use(express.json());
-app.use('/api/user', router)
+
+app.use('/api', router)
 //REQ -> Requisição
 //RES -> Response
 app.get('/healthcheck', (req, res) => {
@@ -30,7 +31,7 @@ sequelize
     })
 
     .then(() => {
-        app.listen(8080, () => {
+        app.listen(process.env.PORT == null ? 8080 : process.env.PORT, () => {
             console.log("######################");
             console.log("Rodando no servidor 8080");
             console.log("######################")

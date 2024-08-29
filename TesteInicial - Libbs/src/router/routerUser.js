@@ -21,7 +21,7 @@ router.put('/:id', validateUserId, validateUser, (req,res)=>{
     UserController.update(req, res)
  
 });
-router.get('/:id', validateUserId,validateUser, (req,res)=>{
+router.get('/:id', validateUserId, (req,res)=>{
     UserController.getOne(req, res)
 });
 
