@@ -3,6 +3,12 @@ const RouteU = require("./routerUser");
 const RouteP = require("./routerProduct");
 const RouteC = require("./routerClient");
 const authenticateToken = require("../middlewares/authenticateToken");
+
+const uploadRoutes = require ('./routerUpload');
+
+router.use('/image', uploadRoutes);
+
+
 //USUARIO
 const router = Router();
 router.use('/user', RouteU);
