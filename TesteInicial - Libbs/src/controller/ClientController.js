@@ -103,4 +103,4 @@ const ClientController = {
         }
     },
 };
-module.exports = ClientController
+module.exports = ClientController;
